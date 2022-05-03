@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de
+	{{user.prenom}}
+{% endblock %}
+
+{% block body %}
+	<h1>Bienvenue
+		{{user.nom}}
+		{{user.prenom}}
+	</h1>
+
+	{% if app.user %}
+		{% for role in app.user.roles %}
+			{% if app.user and role == 'ROLE_COMMERCIAL' %}
+				<h2>Voici les entreprises que ta conquéris</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nom Entreprise</th>
+							<th>SIRET</th>
+							<th>Adresse</th>
+							<th>Postale</th>
+							<th>Ville</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% if user.entreprise | length > 0 %}
+
+							{% for ent in user.entreprise %}
+								<tr>
+
+									<td>{{ ent.id }}</td>
+									<td>{{ ent.nomentreprise }}</td>
+									<td>{{ ent.siret }}</td>
+									<td>{{ ent.adresse }}</td>
+									<td>{{ ent.postale }}</td>
+									<td>{{ ent.ville }}</td>
+								</tr>
+
+							{% endfor %}
+
+						{% endif %}
+					</tbody>
+				</table>
+			{% elseif app.user and role == 'ROLE_CLIENT'  %}
+				<h2>Voici les derniers messages que vous nous avez envoyer</h2>
+				<section class="container">
+					<div class="row">
+						{% for message in app.user.messagecm %}
+
+							<div class="col-6 mt-5 mb-2">
+								<div class="card">
+									<h5 class="card-header">{{ message.titre }}</h5>
+									<div class="card-body">
+										<h5 class="card-title">{{ message.texte }}</h5>
+										<div class="row">
+
+											{% for img in message.contenuimage %}
+												<div class="col-3">
+													<img class="img-fluid w-100" src="/uploads/{{ img.name }}" alt="{{img.name}}">
+
+												</div>
+											{% endfor %}
+											<a href="{{ path('app_message_cm_show', {'id': message.id}) }}" class="btn btn-primary">Voir le message</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+						{% endfor %}
+					</div>
+				</section>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+
+
+	<h2>Les informations de ton profil</h2>
+	<section style="margin: 80px 0;" class="container">
+		<div class="row">
+			<div class="card col-6">
+				<h5 class="card-header">{{user.nom}}
+					-
+					{{user.prenom}}
+					<span class="badge bg-primary">{{user.entreprise | length}}</span>
+				</h5>
+				<div class="card-body">
+					<h5 class="card-title">{{user.telephone}}</h5>
+					<p class="card-text">{{user.email}}</p>
+					<a href="{{ path('app_account_profile')}}" class="btn btn-primary">Modifier mon profil</a>
+				</div>
+			</div>
+
+		</div>
+
+	</section>
+	{% for role in app.user.roles %}
+		{% if app.user and (role == "ROLE_COMMERCIAL" or role =="ROLE_ADMIN")%}
+			<button type="button" class="btn btn-success">
+				<a style="color: white;" href="{{ path('app_entreprise_new') }}">Ajouter une Entreprise</a>
+			</button>
+
+		{% endif %}
+		{% if app.user and role =="ROLE_ADMIN"%}
+			<button type="button" class="btn btn-info">
+				<a style="color: white;" href="{{ path('app_register') }}">Ajouter un Utilisateur</a>
+			</button>
+
+		{% endif %}
+
+	{% endfor %}
+
+{% endblock %}

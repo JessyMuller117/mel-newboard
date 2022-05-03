@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agence
+{% endblock %}
+
+{% block body %}
+
+	<header style="background-repeat:no-repeat; background-position:center; background-size:cover; background-image:url('https://cdn.pixabay.com/photo/2021/04/16/05/13/perth-web-design-6182568_1280.jpg')" class="container-fluid h-90">
+		<h1 class="h1 text-white text-center">{{ agence.secteur }}</h1>
+		<div class="row">
+			<div class="text-white col-4 d-flex flex-column align-items-center justify-content-around">
+				<img src="https://img.icons8.com/ios/50/000000/google-maps.png"/>
+				<p>{{ agence.adresse }}</p>
+				<p>{{ agence.postale }}</p>
+				<p>{{ agence.ville }}</p>
+			</div>
+			<div class="col-4 text-white  d-flex flex-column align-items-center justify-content-around">
+				<img src="https://img.icons8.com/ios/50/000000/apple-phone.png"/>
+				<p>0606060606</p>
+
+			</div>
+			<div class="col-4 text-white  d-flex flex-column align-items-center justify-content-around">
+				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAFPElEQVRoge2ae2hXZRjHP7volltZCdvsQi3X1bJWCVZbhklSTVDqj8puCNUiiMSKgiK6CFl0gdaFKAIpNEq7aJdZWKF0m39M2uhiYl5S1LKt1dK5/X798Zzh2XOe9z3n/C4jwi+8f5z9vs/tPe/7Ps/7nMEh/LdQUmB95cB5wHTgHOAU4FigCjgc+CsYvwAbgQ5gLdBZYD9yxjTgReB3IJvD2AI8DjSMtuPDmIXMaC7OW2MIWAacNloBnASsLGAAegwAjwGVxQziRqDP48Qu4A2gFWgG6oBqoAyoBSYDM4EHgc+AfR5d64H6QgdQhuwDy2AGeB+4POClQRVwB/CzQ/du4Nz83RdUAO84DH0KTCmAjVLgOmCPYaMHOQXzQhmw3FD+J7LMCo06YJVhbztwTD6KXzCUbkRyRLFQAiwy7H5CjrlvnqGsE9m0o4HFhv1b0io5gejp9BPJgygH5gBvAd3AP0hW3wy8C8wHjojRUQJ8qHzYgRwQifGeUtBH8kR1LfAr0dm0jup5gcxcZKPvAFpCuiYCvUruzqRBXGoYvTmBXC3wUYIA9HiIkafVVqX3AcXvThrI50pwDfGbrAF3Lkg7tijdE5ClGeZMjgvifCWQARpjZM5EEpd2aAh4E8nk1cjROhV4BNkvrkCeMmysUJyFcYG0KYFVMfwJwCbDmW+Rkt6FqURneXjiTjX4rYq31OdUKdHMOtvDL0eWnXZmCTDWZyjAM4bsGgd3muJt8CnWy2pP4KwL9xiOtJE8aWnnssA1Dm6N4u32Kb5bkZd5uDVE1/lq/IFr3GQ453qTFYq7L/xjqSLr4m+tx4kFjExMvcD1wKBHRuM29fwachexkFXP3gnrYGTU0x28sURPqft8ig1MUfIZ/FfdesXf61O+TZGPd/CuVLw/gMOSRhBAn46rY/gXK35X+Ee9tMar5x6H0svU80rkKE2KKmQZhvFyjMwl6rnLZAXQ184KB+8bxZsb44TGfCW/ExgTI/Odkmn1kfW6r3HwdBFXl8j9g9ATsSiGf4HiD+Fe9gD8qASsK+w4xelP7L6gUclngUkxMusUvz3OiL5iWslJJ6Zdidw/iJeUfEcM/waigTfFGXlCCTxtcPQb+ZvkmfzEgB+Wv9/DP4to0l2RxNAcJeSqZ35TvKTtmg+Izu4MB7eeaDHaT8JewXjggBI+3eAtVRxfKTOMu4wgXAdFI3JT1NxUXZt2JfykwWkxjNzr0dmClB5WIOHaagxyG7TK++fSBAFy3w4r6AWONnj6JMkiiXEm8mbHIUuuDam/rCCySK/qDGQiNjs4S0hXjALSONaNA+utNJD7Z4Q041ny+I6j1/MAdk65CLvF6Rr7sTe8NfZSgE5mJdFGQjd2P6ke+DiBYxuAC5F98LWHN3zPn6jszEZWylakWZ4Yswwjy3F325uB55FirgfJF98DryO1WLhArQIeRVqvB5DjfB3wMHCyw5f9IT+2pQkE7L7vq55gioEmoklRt4tiUUH0spUF3kZOpWLjKiQJhm0PBn9PjVpkCehgupASohgYi1TEQ8pmBrg1H8X12F3EAaQ+OzIf5QozkINB28ogfYK8UYu9zIaT5mLsxloSVCGV9hcO/f3A1T4FaRNNJVIR3+7hdCJNtq+QzxDbkU7+IPLmKoDjkIvR2Uhvqxn3nvsBKeXXp/Q1Ea6gcA1r1xhA3nJRP1ETGFiIXaXmG8ArFOGzdBwqkVffjr849I0M0vReQI4fPAv9TzVHIU29JuQeMwm5GlcHtvqQjL8TqXQ3IXvpS6QAPYT/Df4FFhEdkB5DuzQAAAAASUVORK5CYII="/>
+				<p>email</p>
+
+			</div>
+		</div>
+	</header>
+	<section id="section-member" class="container">
+		<div class="row">
+			{% for collab in agence.collaborateur %}
+				<div class="col-4">
+					<div class="card" style="width: 18rem;">
+						<div class="card-body">
+							<h5 class="card-title">{{collab.nom}}
+								-
+								{{collab.prenom}}</h5>
+							<h6 class="card-subtitle mb-2 text-muted">{{collab.telephone}}</h6>
+							<p class="card-text">{{collab.email}}</p>
+							<a href="#" class="card-link">Card link</a>
+							<a href="#" class="card-link">Another link</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+	{# <h1>Agence</h1>
+						
+						    <table class="table">
+						        <tbody>
+						            <tr>
+						                <th>Id</th>
+						                <td>{{ agence.id }}</td>
+						            </tr>
+						            <tr>
+						                <th>Secteur</th>
+						                <td>{{ agence.secteur }}</td>
+						            </tr>
+						            <tr>
+						                <th>Adresse</th>
+						                <td>{{ agence.adresse }}</td>
+						            </tr>
+						            <tr>
+						                <th>Postale</th>
+						                <td>{{ agence.postale }}</td>
+						            </tr>
+						            <tr>
+						                <th>Ville</th>
+						                <td>{{ agence.ville }}</td>
+						            </tr>
+						        </tbody>
+						    </table>
+						
+						    <a href="{{ path('app_agence_index') }}">back to list</a>
+						
+						    <a href="{{ path('app_agence_edit', {'id': agence.id}) }}">edit</a> #}
+
+	{{ include('agence/_delete_form.html.twig') }}
+{% endblock %}

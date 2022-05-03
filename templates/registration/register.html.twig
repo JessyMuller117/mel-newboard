@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Utilisateur
+{% endblock %}
+
+
+{% form_theme registrationForm 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+
+
+	<section id="section-register" class="container">
+		<h1>Nouveau Utilisateur</h1>
+		{{ form_start(registrationForm) }}
+		<div class="row">
+			<div class="col-6">
+				{{ form_row(registrationForm.email) }}
+			</div>
+			<div class="col-6">
+				{{ form_row(registrationForm.plainPassword, {
+            label: 'Mot de passe'
+        }) }}
+			</div>
+			<div class="col-4">
+				{{ form_row(registrationForm.nom)}}
+			</div>
+			<div class="col-4">
+				{{ form_row(registrationForm.prenom)}}
+			</div>
+			<div class="col-4">
+				{{ form_row(registrationForm.telephone)}}
+			</div>
+			<div class="col-8">
+				{{ form_row(registrationForm.roles)}}
+			</div>
+			<div class="col-4">
+				{{ form_row(registrationForm.collaborateur_neweb)}}
+			</div>
+
+			<div style="position:relative" class="col-8">
+				{{ form_row(registrationForm.employe)}}
+				<div class="overlay"></div>
+			</div>
+			<div class="col-4">
+				{{ form_row(registrationForm.agreeTerms) }}
+			</div>
+			<div class="col-8">
+				<button type="submit" class="btn btn-primary">Enregistrer</button>
+			</div>
+			{{ form_end(registrationForm) }}
+		</div>
+
+	</section>
+
+{% endblock %}

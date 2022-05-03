@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fichier index{% endblock %}
+
+{% block body %}
+    <h1>Fichier index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Fichier</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fichier in fichiers %}
+            <tr>
+                <td>{{ fichier.id }}</td>
+                <td>{{ fichier.nom }}</td>
+                <td>{{ fichier.fichier }}</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{ path('app_fichier_show', {'id': fichier.id}) }}">Voir</a>
+                    <a class="btn btn-warning" href="{{ path('app_fichier_edit', {'id': fichier.id}) }}">Modifier</a>
+                     <a class="btn btn-info" href="/uploads/brochures/{{ fichier.fichier }}" download>Telecharger</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fichier_new') }}">Create new</a>
+{% endblock %}

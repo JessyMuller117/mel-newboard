@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Entreprises
+{% endblock %}
+
+{% block body %}
+
+
+	<section id="page-list-entreprise" class="container">
+    <h1>Liste des Entreprises</h1>
+		<div class="row">
+			{% for entreprise in entreprises %}
+				<div class="col-3 mt-4">
+					<div class="card">
+						<img class="card-img-top" src="https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_1280.jpg" alt="Card image cap">
+						<div class="card-body">
+							<h5 class="card-title">{{ entreprise.nomEntreprise }}
+								<span class="badge">{{ entreprise.id }}</span>
+							</h5>
+							{# <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> #}
+						</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">{{ entreprise.siret }}</li>
+							<li class="list-group-item">{{ entreprise.adresse }}</li>
+							<li class="list-group-item">{{ entreprise.postale }}</li>
+							<li class="list-group-item">{{ entreprise.ville }}</li>
+						</ul>
+						<div class="card-body d-flex">
+							<a href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}" class="w-50 btn btn-info">Voir l'entreprise</a>
+							<a href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}" class="w-50 btn btn-success">Editer l'entreprise</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<button class="mt-5 btn btn-primary">
+			<a href="{{ path('app_entreprise_new') }}">Ajouter une nouvelle entreprise</a>
+		</button>
+
+	</section>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Entreprise
+{% endblock %}
+
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+
+
+	<section id="section-register" class="container">
+		<h1>{{ titre_form|default('Nouvelle Entreprise') }}</h1>
+		
+{{ form_start(form) }}
+		<div class="row">
+			<div class="col-6">
+				{{ form_row(form.nom_entreprise) }}
+			</div>
+			<div class="col-6">
+				{{ form_row(form.siret) }}
+			</div>
+			<div class="col-4">
+				{{ form_row(form.adresse) }}
+			</div>
+			<div class="col-4">
+				{{ form_row(form.postale) }}
+			</div>
+			<div class="col-4">
+				 {{ form_row(form.ville) }}
+			</div>
+			<div class="col-8">
+				<button class="btn btn-primary">{{ button_label|default('Créer une nouvelle Entreprise') }}</button>
+			</div>
+			
+			{{ form_end(form) }}
+		</div>
+
+	</section>
+
+{% endblock %}

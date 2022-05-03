@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Agence index
+{% endblock %}
+
+{% block body %}
+
+	<section class="container">
+		<div class="row">
+			{% for agence in agences %}
+
+
+				<div class="col-8">
+					<div class="card mb-3" style="max-width: 540px;">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<img src="https://cdn.pixabay.com/photo/2021/04/16/05/13/perth-web-design-6182568_1280.jpg" class="img-fluid rounded-start" alt="...">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<h5 class="card-title">{{ agence.secteur }}
+										-
+										<strong>{{ agence.ville }}</strong>
+										<span class="badge bg-primary">{{ agence.postale }}</span>
+									</h5>
+									<div class="btn-card">
+										<a class="btn btn-info" href="{{ path('app_agence_show', {'id': agence.id}) }}">Voir l'agence</a>
+										<a class="btn btn-warning" href="{{ path('app_agence_edit', {'id': agence.id}) }}">Editer</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+	{# <h1>Agence index</h1>
+				
+				    <table class="table">
+				        <thead>
+				            <tr>
+				                <th>Id</th>
+				                <th>Secteur</th>
+				                <th>Adresse</th>
+				                <th>Postale</th>
+				                <th>Ville</th>
+				                <th>actions</th>
+				            </tr>
+				        </thead>
+				        <tbody>
+				        {% for agence in agences %}
+				            <tr>
+				                <td>{{ agence.id }}</td>
+				                <td>{{ agence.secteur }}</td>
+				                <td>{{ agence.adresse }}</td>
+				                <td>{{ agence.postale }}</td>
+				                <td>{{ agence.ville }}</td>
+				                <td>
+				                    <a href="{{ path('app_agence_show', {'id': agence.id}) }}">show</a>
+				                    <a href="{{ path('app_agence_edit', {'id': agence.id}) }}">edit</a>
+				                </td>
+				            </tr>
+				        {% else %}
+				            <tr>
+				                <td colspan="6">no records found</td>
+				            </tr>
+				        {% endfor %}
+				        </tbody>
+				    </table>
+				
+				    <a href="{{ path('app_agence_new') }}">Create new</a> #}
+{% endblock %}

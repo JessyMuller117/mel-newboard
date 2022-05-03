@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Entreprise{% endblock %}
+
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{% block body %}
+
+    {{ include('entreprise/_form.html.twig') }}
+
+    <div class="w-25 mt-5 btn btn-warning"><a href="{{ path('app_entreprise_index') }}">Retour à la liste des entreprises</a></div>
+{% endblock %}

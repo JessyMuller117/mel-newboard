@@ -1,0 +1,71 @@
+<nav id="menu-principal">
+	<div class="navbar-logo">
+		<a class="logo" href="#"><img class="img-fluid" src="/uploads/logo-n3web.png" alt=""></a>
+		<h4>N3WBOARD</h4>
+		<button class="btn btn-menu btn-open-menu"><img class="img-fluid" src="/uploads/icons8-menu-arrondi-80.png" alt=""></button>
+		<button class="btn btn-menu btn-close-menu"><img class="img-fluid" src="/uploads/icons8-effacer-80.png" alt=""></button>
+	</div>
+	<div class="call-warning d-flex justify-content-around">
+		<div class="d-flex flex-column align-items-center">
+			<img class="img-fluid" width="15%" src="{{ asset('/img/icons8-calendrier-50.png') }}" alt="">
+			<p>Google Agenda</p>
+		</div>
+		<div class="d-flex flex-column align-items-center">
+			<img class="img-fluid" width="15%" src="{{ asset('/img/icons8-warning-49.png') }}" alt="">
+			<p>Signaler un problème</p>
+		</div>
+	</div>
+
+	<div class="title-menu d-flex justify-content-around align-items-around">
+		<div class="separator"></div>
+		<p>
+			<strong>Commercial</strong>
+		</p>
+		<div class="separator"></div>
+	</div>
+	<div class="list-menu">
+		<div class="item-menu">
+			<a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">PDC</a>
+		</div>
+		<div class="item-menu">
+			<a class="nav-link" href="{{path('app_account_n3web')}}">RAC</a>
+		</div>
+		<div class="item-menu">
+			<a class="nav-link" href="{{path('app_account_client')}}">Tremplin</a>
+		</div>
+	</div>
+	<div class="title-menu d-flex justify-content-around align-items-around">
+		<div class="separator"></div>
+		<p>
+			<strong>Technique</strong>
+		</p>
+		<div class="separator"></div>
+	</div>
+	<div class="list-menu">
+		<div class="item-menu">
+			<a class="nav-link" href="{{path('app_entreprise_index')}}">Trello</a>
+		</div>
+		<div class="item-menu">
+			<a class="nav-link" href="{{path('app_account_user')}}">Rapports SEO</a>
+		</div>
+		<div class="item-menu">
+			<a class="nav-link" href="{{path('app_message_cm_index')}}">LockSelf</a>
+		</div>
+	</div>
+	<div class="title-menu d-flex justify-content-around align-items-around">
+		<div class="separator"></div>
+		<p>
+			<strong>Général</strong>
+		</p>
+		<div class="separator"></div>
+	</div>
+	<div class="list-menu">
+		<div class="item-menu">
+			<a class="nav-link" href="{{path('app_entreprise_index')}}">CRM</a>
+		</div>
+		<div class="item-menu">
+			<a class="nav-link" href="{{path('app_account_user')}}">Fichiers Utiles</a>
+		</div>
+	</div>
+
+</nav>

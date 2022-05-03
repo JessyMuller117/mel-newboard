@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de
+	{{user.email}}
+{% endblock %}
+
+{% block body %}
+	<h1>Liste des membres de N3web</h1>
+	{# <table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Email</th>
+				<th>Role</th>
+				<th>Nom</th>
+				<th>Prénom</th>
+				<th>Téléphone</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users %}
+				{% if user.collaborateurneweb %}
+					<tr>
+						<td>{{ user.id }}</td>
+						<td>{{ user.email }}</td>
+						<td>
+							{% for role in user.roles %}
+								{{role}}
+							{% endfor %}
+						</td>
+						<td>{{user.nom}}</td>
+						<td>{{user.prenom}}</td>
+						<td>{{user.telephone}}</td>
+						<td>
+							<a href="{{ path('app_account_index', {'id': user.id}) }}">Voir le profil</a>
+							{% for role in app.user.roles %}
+								{% if app.user and role == 'ROLE_ADMIN' %}
+									<a href="{{ path('app_utilisateur_edit', {'id': user.id}) }}">edit</a>
+
+								{% endif %}
+							{% endfor %}
+
+						</td>
+					</tr>
+
+				{% endif %}
+			{% endfor %}
+		</tbody>
+	</table> #}
+
+	<section class="container-fluid">
+		<div class="row">
+
+			{% for user in users %}
+
+				{% if user.collaborateurneweb %}
+
+					<div class="col-4">
+						<div class="card mb-4 card-list-neweb">
+							<h5 class="card-header card-commerciaux">{{user.nom}}
+								-
+								{{user.prenom}}
+								{% for role in user.roles %}
+									{% if user and role == 'ROLE_COMMERCIAL' %}
+										<span class="badge bg-primary">{{user.entreprise | length}}
+
+										{% endif %}
+									{% endfor %}
+
+								</h5>
+								<div class="card-body">
+									<div>
+										<h5 class="card-title">{{user.telephone}}</h5>
+										<p class="card-text">{{user.email}}</p>
+										{% if app.user == user %}
+											<a href="{{ path('app_account_profile')}}" class="btn btn-primary">Modifier mon profil</a>
+
+										{% endif %}
+
+										{% for role in app.user.roles %}
+											{% if app.user and role == 'ROLE_ADMIN' %}
+												<a  class="btn btn-secondary" href="{{ path('app_utilisateur_edit', {'id': user.id}) }}">Editer son profil</a>
+
+											{% endif %}
+										{% endfor %}
+									</div>
+									<div>
+										<img class="img-fluid" src="https://cdn.pixabay.com/photo/2019/07/27/09/05/red-panda-4366264_1280.jpg" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+
+			</div>
+		</section>
+
+	{% endblock %}

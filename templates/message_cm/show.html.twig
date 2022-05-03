@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MessageCM
+{% endblock %}
+
+{% block body %}
+
+	<h1>Message reçu</h1>
+	{% for role in app.user.roles %}
+		{% if role == "ROLE_CM" %}
+			<section class="container-fluid">
+				<h2>Message des clients</h2>
+				<div class="row justify-content-center">
+					<div class=" col-8 column-message">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-header card-title">{{ message_cm.client.nom }}
+									{{ message_cm.client.prenom }}</h4>
+								<h5 class="card-title">{{ message_cm.titre}}</h5>
+								<p class="card-text">{{ message_cm.texte }}</p>
+								<div class="list-image">
+
+									{% for img in message_cm.contenuimage %}
+										<img class="img-fluid w-25" src="/uploads/{{ img.name }}" alt="{{img.name}}">
+									{% endfor %}
+								</div>
+								{% if app.user %}
+									{% for role in app.user.roles %}
+										{% if app.user and role == 'ROLE_ADMIN' %}
+											{{ include('message_cm/_delete_form.html.twig') }}
+										{% endif %}
+									{% endfor %}
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		{% endif %}
+	{% endfor %}
+
+	{% if app.user.email == message_cm.client.email %}
+
+		<section class="container-fluid">
+			<h2>Message que vous avez envoyé</h2>
+			<div class="row justify-content-center">
+				<div class=" col-8 column-message">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-header card-title">{{ message_cm.client.nom }}
+								{{ message_cm.client.prenom }}</h4>
+							<h5 class="card-title">{{ message_cm.titre}}</h5>
+							<p class="card-text">{{ message_cm.texte }}</p>
+							<div class="list-image">
+
+								{% for img in message_cm.contenuimage %}
+									<img class="img-fluid w-25" src="/uploads/{{ img.name }}" alt="{{img.name}}">
+								{% endfor %}
+							</div>
+							{% if app.user %}
+								{% for role in app.user.roles %}
+									{% if app.user and role == 'ROLE_ADMIN' %}
+										{{ include('message_cm/_delete_form.html.twig') }}
+
+									{% endif %}
+								{% endfor %}
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+	{% endif %}
+	{# 	
+			
+			{% if app.user.email == message_cm.client.email %}
+				<section class="container-fluid">
+					<div class="row justify-content-center">
+						<div class=" col-8 column-message">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-header card-title">{{ message_cm.client.nom }}
+										{{ message_cm.client.prenom }}</h4>
+									<h5 class="card-title">{{ message_cm.titre}}</h5>
+									<p class="card-text">{{ message_cm.texte }}</p>
+									<div class="list-image">
+			
+										{% for img in message_cm.contenuimage %}
+											<img class="img-fluid w-25" src="/uploads/{{ img.name }}" alt="{{img.name}}">
+										{% endfor %}
+									</div>
+									{% if app.user %}
+										{% for role in app.user.roles %}
+											{% if app.user and role == 'ROLE_ADMIN' %}
+												{{ include('message_cm/_delete_form.html.twig') }}
+			
+											{% endif %}
+										{% endfor %}
+									{% endif %}
+			
+			
+								</div>
+							</div>
+						</div>
+			
+			
+					</div>
+				</section> #}
+	{# {% else %}
+					<h2>Vous n'avez pas envoyer ce message</h2>
+					<a class="btn btn-info" href="{{ path('app_account_index') }}" class="dropdown-item">Revenir à votre compte</a>
+			
+			{% endif %} #}
+
+
+{% endblock %}

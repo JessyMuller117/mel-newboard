@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entreprise
+{% endblock %}
+
+{% block body %}
+
+	<section id=" section-show-entreprise" class="gestion-entreprise container">
+		<div class="row">
+			<div class="col-4">
+				<img class="img-fluid" src="https://cdn.pixabay.com/photo/2016/11/29/09/16/architecture-1868667_1280.jpg" alt="">
+			</div>
+			<div class="col-8">
+				<p>Nom Entreprise:
+					{{entreprise.nomEntreprise}}
+				</p>
+				<p>Numéro Siret:
+					{{entreprise.siret}}
+				</p>
+				<p>Adresse:
+					{{entreprise.adresse}}
+				</p>
+				<p>Code Postale:
+					{{entreprise.postale}}
+				</p>
+				<p>Ville:
+					{{entreprise.ville}}
+				</p>
+
+			</div>
+		</div>
+        <div class="h3 mt-4 mb-4 owner-entreprise">
+        Entreprise ajouté par : {{entreprise.commercial.nom}} - {{entreprise.commercial.prenom}}
+        </div>
+		<a class="btn btn-info" href="{{ path('app_entreprise_index') }}">Retour à la liste des entreprises</a>
+
+		<a class="btn btn-warning" href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}">Modifier l'entreprise</a>
+
+		{{ include('entreprise/_delete_form.html.twig') }}
+
+	</section>
+
+	<section class="container-fluid mt-5">
+		<div class="row">
+			<div class="col-6">
+				<h2>Liste des employé qui sont inscrit sur notre plateforme</h2>
+
+				{% for employe in entreprise.employes %}
+  
+					<ul>
+						<li>
+							Nom:{{employe.nom }}</li>
+						<li>
+							Email:{{employe.email }}</li>
+						<li>
+							Prénom:{{employe.prenom }}</li>
+					</ul>
+					<hr class="w-25">
+				{% endfor %}
+			</div>
+
+			<div class="col-6">
+				{% for employe in entreprise.employes %}
+					{% for message in employe.messagecm %}
+                    <div class="d-flex">
+						<p>
+							{{message.titre}}
+						</p>
+						<a href="{{ path('app_message_cm_show', {'id': message.id}) }}" class="btn btn-success">Voir</a>
+                    
+                    </div>
+					
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

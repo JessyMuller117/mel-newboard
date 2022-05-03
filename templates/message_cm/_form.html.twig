@@ -1,0 +1,23 @@
+<section id="section-send-message" class="container">
+	<h1>{{ titre_form|default('Nouveau Message') }}</h1>
+
+	{{ form_start(form) }}
+	<div class="row">
+		<div class="col-6">
+			{{ form_row(form.titre) }}
+		</div>
+		<div class="col-10">
+			{{ form_row(form.texte) }}
+		</div>
+		<div class="col-4">
+			{{ form_row(form.contenu_image) }}
+		</div>
+
+		<div class="col-8">
+			<button class="btn btn-primary">{{ button_label|default('Créer une nouvelle Entreprise') }}</button>
+		</div>
+
+		{{ form_end(form) }}
+	</div>
+
+</section>
