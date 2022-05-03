@@ -27,6 +27,7 @@
         "symfony/http-client": "6.0.*",
         "symfony/intl": "6.0.*",
         "symfony/mailer": "6.0.*",
+        "symfony/maker-bundle": "^1.40",
         "symfony/mercure-bundle": "^0.3.4",
         "symfony/messenger": "6.0.*",
         "symfony/mime": "6.0.*",
@@ -107,7 +108,6 @@
         "doctrine/doctrine-fixtures-bundle": "^3.4",
         "fakerphp/faker": "^1.19",
         "symfony/debug-bundle": "6.0.*",
-        "symfony/maker-bundle": "^1.0",
         "symfony/stopwatch": "6.0.*",
         "symfony/web-profiler-bundle": "6.0.*"
     }
