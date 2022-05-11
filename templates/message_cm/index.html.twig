@@ -1,57 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tous les Messages des clients
+{% block title %}Tous les Messages envoyés
 {% endblock %}
 
 {% block body %}
-	<h1>Tous les Messages des clients</h1>
-
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Titre</th>
-				<th>Texte</th>
-				<th>Images</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for role in app.user.roles %}
-				{% if app.user and role =="ROLE_CM"%}
-					{% for message_cm in message_cms %}
-						<tr>
-							<td>{{ message_cm.id }}</td>
-							<td>{{ message_cm.titre }}</td>
-							<td>{{ message_cm.texte }}</td>
-
-                            <td>{{message_cm.contenuimage | length}}</td>
-							<td>
-								<a href="{{ path('app_message_cm_show', {'id': message_cm.id}) }}">Voir</a>
-							</td>
-						</tr>
-					{% endfor %}
-				{% endif %}
-
-			{% endfor %}
-
-
-			{% for message_cm in message_cms %}
-				{% if app.user.email == message_cm.client.email %}
+	<div class="container mt-5">
+		<h1 class="mt-5 mb-5">Tous les Messages envoyés</h1>
+		<div class="row">
+			<table class="table table-success table-striped">
+				<thead>
 					<tr>
-						<td>{{ message_cm.id }}</td>
-						<td>{{ message_cm.titre }}</td>
-						<td>{{ message_cm.texte }}</td>
-						<td>
-							<a href="{{ path('app_message_cm_show', {'id': message_cm.id}) }}">Voir</a>
-						</td>
+						<th>Client</th>
+						<th>Titre</th>
+						<th>Texte</th>
+						{# <th>Images</th> #}
+						<th>Actions</th>
 					</tr>
+				</thead>
+				<tbody>
 
-				{% endif %}
+					{% for role in app.user.roles %}
+						{% if app.user and role =="ROLE_CM"%}
+							{% for message_cm in message_cms %}
+								<tr>
+									<td>{{ message_cm.client.email }}</td>
+									<td>{{ message_cm.titre }}</td>
+									<td>{{ message_cm.texte }}</td>
 
-			{% endfor %}
-		</tbody>
-	</table>
+									<td>{{message_cm.contenuimage | length}}</td>
+									<td>
+										<a href="{{ path('app_message_cm_show', {'id': message_cm.id}) }}">Voir</a>
+									</td>
+								</tr>
+							{% endfor %}
+						{% endif %}
 
-	<a class="btn btn-primary" href="{{ path('app_message_cm_new') }}">Nous envoyer du contenu</a>
+					{% endfor %}
+
+
+					{% for message_cm in message_cms %}
+						{% if app.user.email == message_cm.client.email %}
+							<tr>
+								<td>{{ message_cm.client.email }}</td>
+								<td>{{ message_cm.titre }}</td>
+								<td>{{ message_cm.texte }}</td>
+								{# <td>{% for img in message_cm.contenuimage %}
+										<img class="img-fluid w-10" src="/uploads/{{ img.name }}" alt="{{img.name}}">
+										<a href="/uploads/{{ img.name }}" download>telecharger</a>
+									{% endfor %}</td> #}
+								<td>
+									<a href="{{ path('app_message_cm_show', {'id': message_cm.id}) }}">Voir</a>
+								</td>
+							</tr>
+
+						{% endif %}
+
+					{% endfor %}
+				</tbody>
+			</table>
+				<a class="btn btn-primary" href="{{ path('app_message_cm_new') }}">Nous envoyer du contenu</a>
+
+		</div>
+	</div>
+
+
 {% endblock %}

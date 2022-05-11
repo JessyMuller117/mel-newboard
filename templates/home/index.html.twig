@@ -24,7 +24,16 @@
 			</div>
 		</div>
 	</header>
-	{% include "/partials/_home-admin.html.twig" %}
+	{% if app.user %}
+			{% for role in app.user.roles %}
+				{% if app.user and role == 'ROLE_CLIENT' %}
+				{% include "/partials/_home-client.html.twig" %}
+			{% elseif app.user and role == 'ROLE_ADMIN' %}
+			{% include "/partials/_home-admin.html.twig" %}
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	
 
 </section>
 {% endblock %}

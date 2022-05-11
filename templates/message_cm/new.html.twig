@@ -1,9 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouveau Message{% endblock %}
+{% block title %}Nouveau Message pour le service Community Management
+{% endblock %}
 
 {% block body %}
 
-    {{ include('message_cm/_form.html.twig') }}
-    <a class="btn btn-info mt-5" href="{{ path('app_account_index') }}">Mes messages déjà envoyé</a>
+	{{ include('message_cm/_form.html.twig') }}
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<button class="btn btn-info">
+					<a class="text-white" href="{{ path('app_message_cm_index') }}">Mes messages déjà envoyé</a>
+				</button>
+			</div>
+		</div>
+	</div>
 {% endblock %}

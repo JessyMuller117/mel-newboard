@@ -5,11 +5,11 @@
 
 {% block body %}
 
-	<h1>Message reçu</h1>
+	
 	{% for role in app.user.roles %}
 		{% if role == "ROLE_CM" %}
-			<section class="container-fluid">
-				<h2>Message des clients</h2>
+			<section class="mt-5 container-fluid">
+				<h1>Message des clients</h1>
 				<div class="row justify-content-center">
 					<div class=" col-8 column-message">
 						<div class="card">
@@ -22,6 +22,7 @@
 
 									{% for img in message_cm.contenuimage %}
 										<img class="img-fluid w-25" src="/uploads/{{ img.name }}" alt="{{img.name}}">
+										<a href="/uploads/{{ img.name }}" download>telecharger</a>
 									{% endfor %}
 								</div>
 								{% if app.user %}
@@ -55,6 +56,7 @@
 
 								{% for img in message_cm.contenuimage %}
 									<img class="img-fluid w-25" src="/uploads/{{ img.name }}" alt="{{img.name}}">
+									<a href="/uploads/{{ img.name }}" download>telecharger</a>
 								{% endfor %}
 							</div>
 							{% if app.user %}
